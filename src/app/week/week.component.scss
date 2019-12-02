@@ -1,0 +1,14 @@
+.week-container {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .day-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    height: 100px;
+    background-color: #FFFFFF;    ;
+    color: #5F5F5F;
+    border: 1px solid #C5C5C5;
+  }
+}
