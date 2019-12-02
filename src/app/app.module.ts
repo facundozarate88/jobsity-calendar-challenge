@@ -25,7 +25,6 @@ import { DayComponent } from './day/day.component';
 import { NewReminderDialogComponent } from './new-reminder-dialog/new-reminder-dialog.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { EditReminderDialogComponent } from './edit-reminder-dialog/edit-reminder-dialog.component';
-import { DeleteRemindersDialogComponent } from './delete-reminders-dialog/delete-reminders-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { DeleteRemindersDialogComponent } from './delete-reminders-dialog/delete
     NewReminderDialogComponent,
     ReminderComponent,
     EditReminderDialogComponent,
-    DeleteRemindersDialogComponent
   ],
   imports: [
     BrowserModule,
