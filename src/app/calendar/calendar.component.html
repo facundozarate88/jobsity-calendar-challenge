@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>{{menuTitle}}</span>
+  <span class="example-fill-remaining-space"></span>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item (click)="openDialog()">Add reminder</button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
+<app-month></app-month>
