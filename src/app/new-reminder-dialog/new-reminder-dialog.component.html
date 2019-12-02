@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>New reminder</h1>
+<div mat-dialog-content>
+  <!-- Date picker -->
+  <mat-form-field class="full-width">
+    <input matInput 
+      placeholder="Choose a date"  
+      [matDatepicker]="picker"
+      [min]="dateService.currentDate"
+      [max]="dateService.monthEndDate"
+      [(ngModel)]="data.date" 
+      >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+  <!-- Time picker -->
+  <mat-form-field class="full-width">
+    <input matInput type="time" [(ngModel)]="data.time" placeholder="Choose a time">
+  </mat-form-field>
+  <!-- City name -->
+  <mat-form-field class="full-width">
+    <input matInput [(ngModel)]="data.city" placeholder="Choose a city">
+  </mat-form-field>
+  <!-- Color picker -->
+  <mat-form-field class="color-picker">
+    <input matInput type="color" [(ngModel)]="data.color" placeholder="Choose a color">
+  </mat-form-field>
+  <!-- Reminder text -->
+  <mat-form-field hintLabel="Max 30 characters" class="full-width">
+    <textarea matInput #reminder cdkTextareaAutosize maxlength="30" [(ngModel)]="data.text" placeholder="Add a reminder text"></textarea>
+    <mat-hint align="end">{{reminder.value?.length || 0}}/30</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>New</button>
+</div>
