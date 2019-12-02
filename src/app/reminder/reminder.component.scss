@@ -1,0 +1,19 @@
+.item-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+  
+  .reminder-item {
+    width: 80%;
+    border: 1px solid #888;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+
+    text-overflow: ellipsis;
+  }
+}
