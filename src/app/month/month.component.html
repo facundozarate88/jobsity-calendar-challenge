@@ -1,0 +1,14 @@
+<div class="month-container">
+  <div class="header-container">
+    <div class="header-day" *ngFor="let dayName of weekDayNames">
+      <div class="day-name">
+          {{dayName}}
+      </div>
+    </div>
+  </div>
+  <div class="body-container">
+    <div class="body-week" *ngFor="let week of weeks">
+      <app-week [week]="week"></app-week>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.month-container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.header-container {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .header-day {
+    display: table;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    height: 25px;
+    overflow: hidden;
+    background-color: #2F75BF;
+    border: 1px solid #C5C5C5;
+    color: white;
+    text-align: center;
+
+    .day-name {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
