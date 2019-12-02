@@ -1,0 +1,9 @@
+<div class="day-container" (click)="addEvent()">
+  <div class="day-number">
+      {{day.date()}}
+  </div>
+  <!-- Add reminders here -->
+  <div class="reminders-container" *ngFor="let reminder of reminders">
+      <app-reminder [reminder]="reminder"></app-reminder>
+  </div>
+</div>
