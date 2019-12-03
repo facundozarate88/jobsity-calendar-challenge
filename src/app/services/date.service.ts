@@ -43,4 +43,9 @@ export class DateService {
     const weekRange = moment.range(firstDay, lastDay);
     return Array.from(weekRange.by('days'));
   }
+
+  isWeekend(day): boolean {
+    const momentDay = moment(day).day();
+    return momentDay === 0 || momentDay === 6;
+  }
 }

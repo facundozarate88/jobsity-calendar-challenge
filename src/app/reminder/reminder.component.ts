@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Reminder } from '../reminder';
 import { EditReminderDialogComponent } from '../edit-reminder-dialog/edit-reminder-dialog.component';
@@ -14,7 +14,7 @@ const moment = extendMoment(Moment);
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.scss']
 })
-export class ReminderComponent implements OnInit {
+export class ReminderComponent {
 
   @Input() reminder: Reminder;
 
@@ -22,9 +22,6 @@ export class ReminderComponent implements OnInit {
     public dialog: MatDialog,
     private reminderService: ReminderService,
   ) { }
-
-  ngOnInit() {
-  }
 
   editReminder() {
     const dialogRef = this.dialog.open(EditReminderDialogComponent, {

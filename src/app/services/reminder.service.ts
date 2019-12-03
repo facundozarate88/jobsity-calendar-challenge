@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reminder } from '../reminder';
 
@@ -24,16 +24,11 @@ export class ReminderService {
   ) {
     this.reminders = new BehaviorSubject<boolean>(false);
     this.reminders$ = this.reminders.asObservable();
-
-    // this.reminders$ = this.getAllReminders();
   }
 
   /** GET - Get all reminders */
   getAllReminders(): Observable<Reminder[]> {
     return this.http.get<Reminder[]>(this.remindersUrl).pipe(
-      tap(_ => {
-        console.log('Reminders fetched');
-      }),
       catchError(this.handleError<Reminder[]>('getReminders', []))
     );
   }
@@ -46,19 +41,14 @@ export class ReminderService {
     const url = `${this.remindersUrl}/?date=${term}`;
 
     return this.http.get<Reminder[]>(url).pipe(
-      tap(_ => {
-        console.log(`Reminders found for date=${term}`);
-      }),
       catchError(this.handleError<Reminder[]>(`getReminders for date=${term}`))
     );
   }
 
   /** POST - Add a new reminder */
   addReminder(reminder: Reminder): Observable<Reminder> {
-    console.log(reminder);
     return this.http.post<Reminder>(this.remindersUrl, reminder, this.httpOptions).pipe(
       tap((newReminder: Reminder) => {
-        console.log(`Reminded added on: ${newReminder.date}`);
         this.reminders.next(true);
       }),
       catchError(this.handleError<Reminder>('addReminder'))
@@ -68,9 +58,6 @@ export class ReminderService {
   /** PUT - update the reminder */
   updateReminder(reminder: Reminder): Observable<any> {
     return this.http.put(this.remindersUrl, reminder, this.httpOptions).pipe(
-      tap(_ => {
-        console.log(`updated reminder for date=${reminder.date}`);
-      }),
       catchError(this.handleError<any>('updateHero'))
     );
   }

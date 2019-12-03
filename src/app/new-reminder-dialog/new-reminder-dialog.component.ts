@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnChanges } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DateService } from '../services/date.service';
 import { WeatherService } from '../services/weather.service';
@@ -9,7 +9,7 @@ import { Reminder } from '../reminder';
   templateUrl: './new-reminder-dialog.component.html',
   styleUrls: ['./new-reminder-dialog.component.scss']
 })
-export class NewReminderDialogComponent implements OnChanges {
+export class NewReminderDialogComponent {
 
   constructor(
     private weatherService: WeatherService,
@@ -22,6 +22,4 @@ export class NewReminderDialogComponent implements OnChanges {
     this.dialogRef.close();
   }
 
-  ngOnChanges() {
-  }
 }

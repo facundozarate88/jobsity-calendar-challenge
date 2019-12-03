@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DateService } from '../services/date.service';
 
 import * as Moment from 'moment';
@@ -25,10 +25,6 @@ export class MonthComponent implements OnInit {
   ngOnInit() {
     this.weekDayNames = this.dateService.weekDayNames;
     this.weeks = this.dateService.weeks;
-  }
-
-  handleClick() {
-    console.log('ok');
   }
 
 }

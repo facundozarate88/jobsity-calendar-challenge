@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DateService } from '../services/date.service';
 import { Reminder } from '../reminder';
@@ -8,7 +8,7 @@ import { Reminder } from '../reminder';
   templateUrl: './edit-reminder-dialog.component.html',
   styleUrls: ['./edit-reminder-dialog.component.scss']
 })
-export class EditReminderDialogComponent implements OnInit {
+export class EditReminderDialogComponent {
 
   constructor(
     public dateService: DateService,
@@ -18,10 +18,6 @@ export class EditReminderDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-
-
-  ngOnInit() {
   }
 
 }

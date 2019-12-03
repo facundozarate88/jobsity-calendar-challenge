@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NewReminderDialogComponent } from '../new-reminder-dialog/new-reminder-dialog.component';
 import { Reminder } from '../reminder';
@@ -15,7 +15,7 @@ const moment = extendMoment(Moment);
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
 
   menuTitle = 'Jobsity Calendar';
   allReminders: Reminder[];
@@ -25,9 +25,6 @@ export class CalendarComponent implements OnInit {
     private reminderService: ReminderService,
     private dateService: DateService,
   ) {}
-
-  ngOnInit() {
-  }
 
   openDialog() {
     const dialogRef = this.dialog.open(NewReminderDialogComponent, {
@@ -45,8 +42,7 @@ export class CalendarComponent implements OnInit {
       if (result) {
         result.date = moment(result.date).format('YYYY-MM-DD');
         this.reminderService.addReminder(result as Reminder).subscribe(rem => {
-          this.reminderService.getAllReminders().subscribe(all => console.log(all)
-          );
+          this.reminderService.getAllReminders();
         });
       }
     });

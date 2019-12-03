@@ -4,6 +4,7 @@ import { Reminder } from '../reminder';
 
 import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import { DateService } from '../services/date.service';
 
 const moment = extendMoment(Moment);
 
@@ -17,18 +18,17 @@ const TIME_FORMAT = 'YYYY-MM-DD';
 export class DayComponent implements OnInit, OnChanges {
 
   @Input() day;
+  isWeekend: boolean;
 
   reminders: Reminder[];
 
   constructor(
     private reminderService: ReminderService,
+    private dateService: DateService,
   ) { }
 
   ngOnInit() {
-    // this.reminders = this.reminderService.getReminders(this.day.format(TIME_FORMAT));
-      // .subscribe((reminders: Reminder[]) => {
-      //   this.reminders = reminders;
-      // });
+    this.isWeekend = this.dateService.isWeekend(this.day);
     this.reminderService.reminders$.subscribe(_ => {
       this.reminderService.getReminders(this.day.format(TIME_FORMAT)).subscribe(reminders => {
         reminders.sort((a, b) => {
@@ -43,10 +43,6 @@ export class DayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-  }
-
-  addEvent() {
-    console.log(this.day.format('YYYY-MM-DD'));
   }
 
 }
